@@ -50,12 +50,22 @@ switch ($rota) {
         $controller->processarCadastro();
         break;
 
+    case '/recuperar-senha':
+            $controller = new AuthController();
+            $controller->recuperarSenha();
+            break;
+    
+    case '/recuperar-senha/processar':
+            $controller = new AuthController();
+            $controller->processarRecuperacao();
+            break;
+
     case '/dashboard':
         if (!isset($_SESSION['usuario_id'])) {
             header('Location: ' . BASE_URL . '/login');
             exit;
         }
-        echo "<h1>Bem-vindo, " . $_SESSION['usuario_nome'] . " (" . $_SESSION['usuario_perfil'] . ")! 🚀</h1>";
+        echo "<h1>Bem-vindo, " . $_SESSION['usuario_nome'] . " (" . $_SESSION['usuario_perfil'] . ")!</h1>";
         echo "<a href='" . BASE_URL . "/logout'>Sair</a>";
         break;
 
