@@ -78,6 +78,16 @@ switch ($rota) {
         echo "<a href='" . BASE_URL . "/logout'>Sair</a>";
         break;
 
+    case '/eventos':
+        $controller = new App\Controllers\EventoController();
+        $controller->index();
+        break;
+
+    case '/eventos/salvar':
+        $controller = new App\Controllers\EventoController();
+        $controller->salvar();
+        break;
+
     case '/logout':
         session_destroy();
         header('Location: ' . BASE_URL . '/login');

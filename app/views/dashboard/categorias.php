@@ -30,7 +30,7 @@
         <h2>EvenSys</h2>
         <a href="<?= BASE_URL ?>/dashboard">🏠 Início</a>
         <a href="<?= BASE_URL ?>/categorias">🏷️ Categorias</a>
-        <a href="#">📅 Eventos</a>
+        <a href="<?= BASE_URL ?>/eventos">📅 Eventos</a>
         <a href="<?= BASE_URL ?>/logout" style="margin-top: auto; border-top: 1px solid #374151;">🚪 Sair</a>
     </nav>
 

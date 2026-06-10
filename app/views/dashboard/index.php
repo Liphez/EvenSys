@@ -26,7 +26,7 @@
         <a href="<?= BASE_URL ?>/dashboard">🏠 Início</a>
         <?php if ($_SESSION['usuario_perfil'] !== 'participante'): ?>
             <a href="<?= BASE_URL ?>/categorias">🏷️ Categorias</a>
-            <a href="#">📅 Eventos</a>
+           <a href="<?= BASE_URL ?>/eventos">📅 Eventos</a>
         <?php endif; ?>
         <a href="<?= BASE_URL ?>/logout" style="margin-top: auto; border-top: 1px solid #374151;">🚪 Sair</a>
     </nav>
