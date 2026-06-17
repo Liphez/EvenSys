@@ -42,4 +42,32 @@ class Evento
             'capacidade' => $dados['capacidade_maxima']
         ]);
     }
+    public static function listarAtivos()
+    {
+        $db = Database::getConnection();
+        // Busca eventos ativos e traz o nome da categoria junto
+        $stmt = $db->query("
+            SELECT e.*, c.nome as categoria_nome 
+            FROM eventos e 
+            LEFT JOIN categorias c ON e.categoria_id = c.id 
+            WHERE e.status = 'ativo' 
+            ORDER BY e.data_hora ASC
+        ");
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public static function buscarPorId($id)
+    {
+        $db = Database::getConnection();
+        // Busca um evento específico com o nome do organizador e categoria
+        $stmt = $db->prepare("
+            SELECT e.*, c.nome as categoria_nome, u.nome as organizador_nome 
+            FROM eventos e 
+            LEFT JOIN categorias c ON e.categoria_id = c.id 
+            LEFT JOIN usuarios u ON e.organizador_id = u.id 
+            WHERE e.id = :id
+        ");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }
