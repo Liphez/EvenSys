@@ -47,6 +47,7 @@
                 <input type="password" id="senha" name="senha" required>
             </div>
             <button type="submit" class="btn-submit">Entrar</button>
+            <a href="<?= BASE_URL ?>/recuperar-senha" class="link-footer" style="margin-bottom: 1rem;">Esqueci minha senha</a>
             <a href="<?= BASE_URL ?>/cadastro" class="link-footer">Criar uma conta</a>
         </form>
     </div>

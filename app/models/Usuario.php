@@ -26,6 +26,18 @@ class Usuario
             'email' => $email,
             'senha' => $senha_hash,
             'perfil' => $perfil
+         
+        ]);
+    }
+
+    public static function atualizarSenha(string $email, string $nova_senha_hash)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("UPDATE usuarios SET senha_hash = :senha WHERE email = :email");
+        
+        return $stmt->execute([
+            'senha' => $nova_senha_hash,
+            'email' => $email
         ]);
     }
 }
