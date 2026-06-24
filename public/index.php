@@ -93,6 +93,16 @@ switch ($rota) {
         header('Location: ' . BASE_URL . '/login');
         break;
 
+        case '/vitrine':
+            $controller = new App\Controllers\VitrineController();
+            $controller->index();
+            break;
+    
+        case '/evento/detalhes':
+            $controller = new App\Controllers\VitrineController();
+            $controller->detalhes();
+            break;
+
     default:
         http_response_code(404);
         echo "<h1>Erro 404 - Página não encontrada na rota: $rota</h1>";
