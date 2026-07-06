@@ -42,9 +42,21 @@ class EventoController
         // Validação simples
         if (!empty($dados['titulo']) && !empty($dados['data_hora']) && !empty($dados['categoria_id'])) {
             Evento::criar($dados);
+        } 
+
+        header('Location: ' . BASE_URL . '/eventos');
+        exit;
+    } 
+    public function cancelar()
+    {
+        $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        
+        if ($id) {
+            Evento::cancelar($id, $_SESSION['usuario_id']);
         }
 
         header('Location: ' . BASE_URL . '/eventos');
         exit;
-    }
-}
+    } 
+    
+} 

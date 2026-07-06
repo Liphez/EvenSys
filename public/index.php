@@ -88,6 +88,21 @@ switch ($rota) {
         $controller->salvar();
         break;
 
+    case '/eventos/cancelar':
+        $controller = new App\Controllers\EventoController();
+        $controller->cancelar();
+        break;
+
+    case '/lotes':
+        $controller = new App\Controllers\LoteController();
+        $controller->index();
+        break;
+
+    case '/lotes/salvar':
+        $controller = new App\Controllers\LoteController();
+        $controller->salvar();
+        break;
+
     case '/logout':
         session_destroy();
         header('Location: ' . BASE_URL . '/login');
@@ -112,6 +127,7 @@ switch ($rota) {
         $controller = new App\Controllers\CompraController();
         $controller->meusIngressos();
         break;
+
 
     default:
         http_response_code(404);

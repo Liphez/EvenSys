@@ -35,4 +35,19 @@ class Lote
         $stmt = $db->prepare("UPDATE lotes SET quantidade = quantidade - 1 WHERE id = :id AND quantidade > 0");
         return $stmt->execute(['id' => $id]);
     }
+    public static function criar($evento_id, $nome, $quantidade, $preco)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("
+            INSERT INTO lotes (evento_id, nome, quantidade, preco) 
+            VALUES (:ev_id, :nome, :qtd, :preco)
+        ");
+        
+        return $stmt->execute([
+            'ev_id' => $evento_id,
+            'nome' => $nome,
+            'qtd' => $quantidade,
+            'preco' => $preco
+        ]);
+    }
 }

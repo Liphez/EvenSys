@@ -88,23 +88,38 @@
                 <thead>
                     <tr>
                         <th>Título</th>
-                        <th>Categoria</th>
                         <th>Data</th>
-                        <th>Capacidade</th>
                         <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(empty($eventos)): ?>
-                        <tr><td colspan="5" style="text-align: center;">Nenhum evento cadastrado ainda.</td></tr>
+                        <tr><td colspan="4" style="text-align: center;">Nenhum evento cadastrado.</td></tr>
                     <?php else: ?>
                         <?php foreach ($eventos as $ev): ?>
                             <tr>
                                 <td><strong><?= htmlspecialchars($ev->titulo) ?></strong></td>
-                                <td><?= htmlspecialchars($ev->categoria_nome ?? 'Sem Categoria') ?></td>
                                 <td><?= date('d/m/Y H:i', strtotime($ev->data_hora)) ?></td>
-                                <td><?= $ev->capacidade_maxima ?> pessoas</td>
-                                <td><span class="badge-status"><?= strtoupper($ev->status) ?></span></td>
+                                <td>
+                                    <?php if($ev->status === 'ativo'): ?>
+                                        <span class="badge-status" style="background: #D1FAE5; color: #065F46;">ATIVO</span>
+                                    <?php else: ?>
+                                        <span class="badge-status" style="background: #FEE2E2; color: #991B1B;">CANCELADO</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if($ev->status === 'ativo'): ?>
+                                        <a href="<?= BASE_URL ?>/lotes?evento_id=<?= $ev->id ?>" style="background: var(--primary); color: white; padding: 0.3rem 0.6rem; text-decoration: none; border-radius: 4px; font-size: 0.8rem; margin-right: 0.5rem;">🏷️ Lotes</a>
+                                        
+                                        <form action="<?= BASE_URL ?>/eventos/cancelar" method="POST" style="display:inline; grid-template-columns: none; gap: 0;">
+                                            <input type="hidden" name="id" value="<?= $ev->id ?>">
+                                            <button type="submit" style="background: #DC2626; color: white; padding: 0.3rem 0.6rem; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-top: 0;" onclick="return confirm('Atenção: Cancelar o evento encerra todas as vendas. Deseja continuar?');">🚫 Cancelar</button>
+                                        </form>
+                                    <?php else: ?>
+                                        <span style="font-size: 0.8rem; color: #6B7280;">Nenhuma ação disponível</span>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
