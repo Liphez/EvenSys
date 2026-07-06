@@ -93,15 +93,25 @@ switch ($rota) {
         header('Location: ' . BASE_URL . '/login');
         break;
 
-        case '/vitrine':
-            $controller = new App\Controllers\VitrineController();
-            $controller->index();
-            break;
-    
-        case '/evento/detalhes':
-            $controller = new App\Controllers\VitrineController();
-            $controller->detalhes();
-            break;
+    case '/vitrine':
+        $controller = new App\Controllers\VitrineController();
+        $controller->index();
+        break;
+
+    case '/evento/detalhes':
+        $controller = new App\Controllers\VitrineController();
+        $controller->detalhes();
+        break;
+
+    case '/comprar':
+        $controller = new App\Controllers\CompraController();
+        $controller->comprar();
+        break;
+
+    case '/meus-ingressos':
+        $controller = new App\Controllers\CompraController();
+        $controller->meusIngressos();
+        break;
 
     default:
         http_response_code(404);

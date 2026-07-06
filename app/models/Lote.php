@@ -19,4 +19,20 @@ class Lote
         $stmt->execute(['evento_id' => $evento_id]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public static function buscarPorId($id)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM lotes WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public static function decrementarQuantidade($id)
+    {
+        $db = Database::getConnection();
+        // A trava "quantidade > 0" no SQL garante que nunca venderemos ingresso negativo (RN02)
+        $stmt = $db->prepare("UPDATE lotes SET quantidade = quantidade - 1 WHERE id = :id AND quantidade > 0");
+        return $stmt->execute(['id' => $id]);
+    }
 }
