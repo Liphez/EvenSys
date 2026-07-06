@@ -6,8 +6,6 @@ O **EvenSys** é um sistema web de gestão de eventos e venda de ingressos const
 
 ## 🤖 Transparência e Desenvolvimento Estratégico
 
-Sendo totalmente transparente sobre o processo de desenvolvimento: a stack principal exigida pela disciplina foi o PHP, uma tecnologia que não faz parte do meu plano de carreira e foco profissional futuro.
-
 Para lidar com esse cenário de forma pragmática, **utilizei ferramentas de IA para agilizar a entrega** e orientar a estruturação do código. No entanto, todo o desenvolvimento foi feito com muito cuidado, zelo e revisão técnica. Embora a IA seja uma excelente aliada, na prática, ela muitas vezes mais atrapalha do que ajuda se não houver um desenvolvedor no comando para garantir o desacoplamento, a lógica de negócios e a coerência da arquitetura.
 
 Este repositório é o resultado de uma engenharia guiada, mas supervisionada e auditada com rigor.
@@ -60,7 +58,7 @@ composer install
 * Crie um arquivo `.env` na raiz do projeto com base no seu ambiente local:
 
 ```env
-DB_HOST=127.0.0.1
+DB_HOST=127.0.0.1 // ou localhost
 DB_NAME=evensys
 DB_USER=root
 DB_PASS=
