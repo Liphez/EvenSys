@@ -88,20 +88,56 @@ switch ($rota) {
         $controller->salvar();
         break;
 
+    case '/eventos/cancelar':
+        $controller = new App\Controllers\EventoController();
+        $controller->cancelar();
+        break;
+
+    case '/lotes':
+        $controller = new App\Controllers\LoteController();
+        $controller->index();
+        break;
+
+    case '/lotes/salvar':
+        $controller = new App\Controllers\LoteController();
+        $controller->salvar();
+        break;
+
+        case '/checkin':
+        $controller = new App\Controllers\CheckinController();
+        $controller->index();
+        break;
+
+    case '/checkin/processar':
+        $controller = new App\Controllers\CheckinController();
+        $controller->processar();
+        break;
+
     case '/logout':
         session_destroy();
         header('Location: ' . BASE_URL . '/login');
         break;
 
-        case '/vitrine':
-            $controller = new App\Controllers\VitrineController();
-            $controller->index();
-            break;
-    
-        case '/evento/detalhes':
-            $controller = new App\Controllers\VitrineController();
-            $controller->detalhes();
-            break;
+    case '/vitrine':
+        $controller = new App\Controllers\VitrineController();
+        $controller->index();
+        break;
+
+    case '/evento/detalhes':
+        $controller = new App\Controllers\VitrineController();
+        $controller->detalhes();
+        break;
+
+    case '/comprar':
+        $controller = new App\Controllers\CompraController();
+        $controller->comprar();
+        break;
+
+    case '/meus-ingressos':
+        $controller = new App\Controllers\CompraController();
+        $controller->meusIngressos();
+        break;
+
 
     default:
         http_response_code(404);

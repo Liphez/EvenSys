@@ -70,4 +70,14 @@ class Evento
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+    public static function cancelar($id, $organizador_id)
+    {
+        $db = Database::getConnection();
+        // A trava do organizador_id garante que ninguém cancele o evento de outra pessoa
+        $stmt = $db->prepare("UPDATE eventos SET status = 'cancelado' WHERE id = :id AND organizador_id = :org_id");
+        return $stmt->execute([
+            'id' => $id, 
+            'org_id' => $organizador_id
+        ]);
+    }
 }
