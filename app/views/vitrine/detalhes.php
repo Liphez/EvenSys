@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var object $evento
+ * @var array $lotes
+ */
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,7 +44,7 @@
             <p><strong>📅 Data:</strong> <?= date('d/m/Y \à\s H:i', strtotime($evento->data_hora)) ?></p>
             <p><strong>🏢 Organizador:</strong> <?= htmlspecialchars($evento->organizador_nome) ?></p>
 
-            <form action="<?= BASE_URL ?>/comprar" method="POST">
+            <form action="<?= BASE_URL ?>/comprar" method="POST" onsubmit="document.querySelector('.btn-comprar').disabled = true; document.querySelector('.btn-comprar').innerText = 'Processando...';">
                 <input type="hidden" name="evento_id" value="<?= $evento->id ?>">
                 
                 <div class="form-group">
@@ -56,7 +62,7 @@
                 <?php if(empty($lotes)): ?>
                     <button type="button" class="btn" disabled>Ingressos Esgotados ou Indisponíveis</button>
                 <?php else: ?>
-                    <button type="submit" class="btn">Comprar Ingresso</button>
+                    <button type="submit" class="btn btn-comprar">Comprar Ingresso</button>
                 <?php endif; ?>
             </form>
         </div>

@@ -38,5 +38,20 @@ class Ingresso
         ");
         $stmt->execute(['part_id' => $participante_id]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    }
+
+    public static function buscarPorCodigo($codigo)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("
+            SELECT i.*, e.organizador_id, e.titulo as evento_nome 
+            FROM ingressos i 
+            JOIN compras c ON i.compra_id = c.id 
+            JOIN eventos e ON c.evento_id = e.id 
+            WHERE i.codigo_unico = :codigo
+        ");
+        $stmt->execute(['codigo' => $codigo]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }

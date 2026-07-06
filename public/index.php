@@ -103,6 +103,16 @@ switch ($rota) {
         $controller->salvar();
         break;
 
+        case '/checkin':
+        $controller = new App\Controllers\CheckinController();
+        $controller->index();
+        break;
+
+    case '/checkin/processar':
+        $controller = new App\Controllers\CheckinController();
+        $controller->processar();
+        break;
+
     case '/logout':
         session_destroy();
         header('Location: ' . BASE_URL . '/login');
