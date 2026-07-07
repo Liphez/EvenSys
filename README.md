@@ -4,6 +4,17 @@
 
 O **EvenSys** é um sistema web de gestão de eventos e venda de ingressos construído com arquitetura MVC em PHP puro. Este é um projeto acadêmico desenvolvido para consolidar conceitos de Engenharia de Software, modelagem de dados e segurança de aplicações (autenticação, sessões e proteção contra injeções SQL), juntamente com o uso de IA.
 
+## 🎓 Informações Acadêmicas
+
+Este projeto foi desenvolvido com a finalidade de consolidar os conhecimentos teóricos e práticos adquiridos ao longo da graduação.
+
+---
+
+* **Autor:** Isack Phelipe (*Graduando em Engenharia de Software*)
+* **Instituição:** UNICEPLAC (Centro Universitário do Planalto Central Apparecido dos Santos)
+* **Orientação Acadêmica:** Prof. Hudson Neves
+* **Contexto:** Disciplina de Programação Orientada a Software Básico — ENGSOFT6AM
+
 ## 🤖 Transparência e Desenvolvimento Estratégico
 
 Para lidar com esse cenário de forma pragmática, **utilizei ferramentas de IA para agilizar a entrega** e orientar a estruturação do código. No entanto, todo o desenvolvimento foi feito com muito cuidado, zelo e revisão técnica. Embora a IA seja uma excelente aliada, na prática, ela muitas vezes mais atrapalha do que ajuda se não houver um desenvolvedor no comando para garantir o desacoplamento, a lógica de negócios e a coerência da arquitetura.
